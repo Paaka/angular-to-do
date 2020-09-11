@@ -1,0 +1,13 @@
+<input 
+  type="text" 
+  class="form-control, form-control-sm"
+  [(ngModel)]="creatingTask">
+<button 
+  class="btn btn-success"
+  (click)="createNewTask()" 
+  [disabled]="!creatingTask"
+  >Create task</button>
+
+  <div *ngFor="let task of tasks">
+    <p>{{task.task}}</p>
+  </div>
