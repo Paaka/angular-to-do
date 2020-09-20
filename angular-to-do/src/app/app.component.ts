@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ITask } from 'src/interfaces/task.interface';
 
 @Component({
   selector: 'app-root',
@@ -8,20 +9,26 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'angular-to-do';
 
-  tasks = [];
+  tasks:Array<ITask> = [];
 
   creatingTask = '';
 
+
   createNewTask():void{
     if(this.creatingTask.length > 0){
-      const task = {
+      const task:ITask = {
         id:`${this.tasks.length}-${Date.now()}`,
-        task:this.creatingTask,
+        content:this.creatingTask,
         isDone:false,
       };
+
       this.tasks.push(task);
       this.creatingTask = '';
     }
+  }
+
+  deleteTask(task:ITask):void{
+    this.tasks = this.tasks.filter(toDoTasks => toDoTasks.id !== task.id);
   }
 
 }

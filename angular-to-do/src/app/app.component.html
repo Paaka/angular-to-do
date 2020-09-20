@@ -9,5 +9,5 @@
   >Create task</button>
 
   <div *ngFor="let task of tasks">
-    <p>{{task.task}}</p>
+    <app-task [task]="task" (itemDeletion)="deleteTask(task)"></app-task>
   </div>
